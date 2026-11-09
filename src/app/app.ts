@@ -32,7 +32,7 @@ export class App {
     "img12.jpg"
   ];
 
-  // propaperties
+  // properties
 
   popupEle!:HTMLElement ;
   popupImg!:HTMLImageElement ;
@@ -93,7 +93,7 @@ export class App {
   };
 
   key:string="";
-  lastTimeout:number | undefined= undefined;
+  lastTimeout:ReturnType<typeof setTimeout>| undefined;
   keyboardInductors(e : KeyboardEvent){
     this.key+=Number(e.key);
     console.log(this.key);
