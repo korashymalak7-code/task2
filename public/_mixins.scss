@@ -1,0 +1,64 @@
+@mixin eleDimensions($w:100%,$h:auto){
+    width: $w;
+    height: $h;
+}
+
+@mixin flex($d:flex,$jc:Center,$ai:center){
+    display: $d;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin position($p:absolute,$t:initial,$l:initial,$b:initial,$r:initial){
+    position: $p;
+    top: $t;
+    left: $l;
+    bottom: $b;
+    right: $r;
+}
+
+@mixin font($s:16,$w:400){
+    font: {
+        size:$s;
+        weight:$w;
+    }
+}
+
+@mixin responsive($brickPoint){
+    
+    @if($brickPoint == 350){
+        @media (max-width: 1300px) {
+            @content;
+        }
+    }
+    
+    @else if($brickPoint == 450){
+        @media (min-width: 371px) and (max-width: 1300px)  {
+            @content;
+        }
+    }
+
+    @else if($brickPoint == 650){
+        @media (min-width: 577px) and (max-width: 1300px)  {
+            @content;
+        }
+    }
+
+    @else if($brickPoint == 850){
+        @media  (min-width: 769px) and (max-width: 1300px) {
+            @content;
+        }
+    }
+
+    @else if($brickPoint == 1050){
+        @media  (min-width: 992px) and (max-width: 1300px)  {
+            @content;
+        }
+    }
+
+    @else if($brickPoint == 1250){
+        @media  (min-width: 1181px) and (max-width: 1300px)  {
+            @content;
+        }
+    }
+}

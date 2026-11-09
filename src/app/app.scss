@@ -1,0 +1,101 @@
+@use "./../../public/mixins" as *;
+
+#Gallery{
+    .item{
+        border-radius:10px;
+        color:#fff;
+        overflow:hidden;
+        width:300px;
+        height: 300px;
+        position :relative;
+        img{
+            transition-duration:.5s;
+            width: 100%;
+            height: 100%;
+        }
+        .layout{
+            @include position($t:0,$l:0);
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,.5);
+            @include flex();
+            opacity:0;
+            transition-duration:1s;
+            i{
+                transition-duration:.5s;
+                font-size: 30px;
+                cursor: pointer;
+                &:hover{
+                    transform:rotate(180deg)
+                }
+            }
+        }
+        &:hover{
+            img{
+                transform:scale(1.04);
+            }
+            .layout{
+                transition-delay:.2s;
+                opacity:1;
+            }
+        }
+    }
+
+}
+
+
+.popup{
+    @include position($p:fixed,$t:0,$l:0);
+    width:100%;
+    height:100%;
+    background-color: rgba(44, 83, 100,.5);
+    display:none;
+    opacity:0;
+    transition-duration: .5s;
+    &.active{
+        @include flex();
+    }
+    &.show{
+        opacity:1;
+    }
+    .box{
+        max-width: 500px;
+        border-radius: 10px;
+        margin-inline: 20px;
+        overflow:hidden;
+        position: relative;
+        i.exit{
+            @include position($t:20px,$r:20px);
+        }
+        i.next{
+            @include position($t:50%,$r:20px);
+            transform: translateY(-50%);
+        }
+        i.prev{
+            @include position($t:50%,$l:20px);
+            transform: translateY(-50%);
+        }
+        i,li{
+            border-radius: 50%;
+            background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+            color: var(--bs-yellow);
+            width: 33px;
+            height: 33px;
+            @include flex();
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .inductor{
+            @include position($b:30px,$l:50%);
+            transform: translateX(-50%);
+            @include flex();
+            ul{
+                width: max-content;
+                li.active{
+                    background:linear-gradient(#fff);
+                     
+                }
+            }
+        }
+    }
+}
